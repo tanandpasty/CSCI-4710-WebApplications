@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(10, 10, 10) !important;
+}
+
 .bg-color1 {
   background-color: rgb(173, 25, 25) !important;
 }
@@ -7,7 +11,7 @@
 }
 
 .bg-color3 {
-  background-color: rgb(59, 59, 59);
+  background-color: rgb(59, 59, 59) !important;
 }
 
 .color1 {
@@ -16,4 +20,56 @@
 
 .color2 {
   color: rgb(10, 10, 10) !important;
+}
+
+.navbarText {
+  font-weight: bolder;
+  font-size: 2em;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.large-section {
+  height: 50vh;
+}
+
+.full-page {
+  height: 94vh;
+}
+
+.sub-section {
+  width: 75%;
+  padding: 10px 100px;
+}
+
+.sub-section-element {
+  width: 100%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-25 {
+  width: 25%;
+}
+
+.height-25 {
+  height: 25%;
+}
+
+.height-50 {
+  height: 50%;
+}
+
+.question-section {
+  border: 1px red solid;
+}
+
+@media only screen and (max-width: 992px) {
+  .section-bg-vampire {
+    background-image: url("Vampire.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 50vh;
+  }
 }
