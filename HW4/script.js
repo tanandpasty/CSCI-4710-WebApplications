@@ -156,11 +156,12 @@ class vampire_view {
         ['Human', values[1]],
         ['Vampire', values[0]]]);
         // Set chart options
-        var options = {'title':'Vampire/Human Ratio',
-                       'width':400,
-                       'height':300,
+        var options = {title:'Vampire/Human Ratio',
+        				titleTextStyle: {color: 'white'},
+                      	chartArea: {left:'40%',width:'300',height:'80%'},
 					    is3D: true,
-					    backgroundColor: '#0a0a0a'};
+					    backgroundColor: '#0a0a0a',
+						legend: {textStyle: {color: 'white', fontSize: 16}}};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('vampire-chart'));
