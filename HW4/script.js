@@ -7,6 +7,8 @@ class vampire_model {
 
 	constructor() {
 		this.classmate_data = [];
+		this.num_vampire = 0;
+		this.num_human = 0;
 	}
 
 
@@ -33,12 +35,14 @@ class vampire_model {
 
 		if (score > 6) {
 			this.classmate_data.push({"name": name, "vampire": "Yes"});
+			this.num_vampire++;
 			console.log(JSON.stringify(this.classmate_data));
 			return {"name": name, "vampire": "Yes"};
 		}
 
 		else {
 			this.classmate_data.push({"name": name, "vampire": "No"});
+			this.num_human++;
 			console.log(JSON.stringify(this.classmate_data));
 			return {"name": name, "vampire": "No"};
 		}
@@ -64,16 +68,24 @@ class vampire_model {
 
 		if (score > 6) {
 			this.classmate_data.push({"name": name, "vampire": "Yes"});
+			this.num_vampire++;
 			console.log(JSON.stringify(this.classmate_data));
 			return {"name": name, "vampire": "Yes"};
 		}
 
 		else {
 			this.classmate_data.push({"name": name, "vampire": "No"});
+			this.num_human++;
 			console.log(JSON.stringify(this.classmate_data));
 			return {"name": name, "vampire": "No"};
 		}
 
+	}
+
+
+	get_values() {
+		var values = [this.num_vampire, this.num_human];
+		return values;
 	}
 
 }
@@ -132,6 +144,28 @@ class vampire_view {
 		new_cell2.appendChild(new_text2);
 
 	}
+
+
+	draw_chart(values) {
+		var data = new google.visualization.DataTable();
+        // classmate_data_processing(classmate_data, data);
+        
+		data.addColumn('string', 'Element');
+      	data.addColumn('number', 'Count');
+      	data.addRows([     
+        ['Human', values[1]],
+        ['Vampire', values[0]]]);
+        // Set chart options
+        var options = {'title':'Vampire/Human Ratio',
+                       'width':400,
+                       'height':300,
+					    is3D: true,
+					    backgroundColor: '#0a0a0a'};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('vampire-chart'));
+        chart.draw(data, options);
+	}
 }
 
 
@@ -146,7 +180,6 @@ class vampire_controller {
 		this.v_model = v_model
 		this.v_view = v_view
 		this.quiz = "";
-		this.added_names = [];
 	}
 
 
@@ -194,6 +227,10 @@ class vampire_controller {
 		}
 
 		this.v_view.update_table(result);
+
+		var values = this.v_model.get_values();
+
+		this.v_view.draw_chart(values);
 
 	}
 
