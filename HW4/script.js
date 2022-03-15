@@ -5,10 +5,12 @@
 // Model component which handles application logic.
 class vampire_model {
 
-	constructor() {}
+	constructor() {
+		this.classmate_data = [];
+	}
 
 
-	random_logic() {
+	random_logic(name) {
 
 		var score = 0;
 
@@ -30,16 +32,20 @@ class vampire_model {
 		console.log(score);
 
 		if (score > 6) {
-			return true;
+			this.classmate_data.push({"name": name, "vampire": "Yes"});
+			console.log(JSON.stringify(this.classmate_data));
+			return {"name": name, "vampire": "Yes"};
 		}
 
 		else {
-			return false;
+			this.classmate_data.push({"name": name, "vampire": "No"});
+			console.log(JSON.stringify(this.classmate_data));
+			return {"name": name, "vampire": "No"};
 		}
 	}
 
 
-	question_logic(ans1, ans2, ans3) {
+	question_logic(ans1, ans2, ans3, name) {
 
 		var score = 0;
 
@@ -57,14 +63,19 @@ class vampire_model {
 		console.log(score);
 
 		if (score > 6) {
-			return true;
+			this.classmate_data.push({"name": name, "vampire": "Yes"});
+			console.log(JSON.stringify(this.classmate_data));
+			return {"name": name, "vampire": "Yes"};
 		}
 
 		else {
-			return false;
+			this.classmate_data.push({"name": name, "vampire": "No"});
+			console.log(JSON.stringify(this.classmate_data));
+			return {"name": name, "vampire": "No"};
 		}
 
 	}
+
 }
 
 
@@ -82,6 +93,8 @@ class vampire_view {
 			document.getElementById("question3").style.visibility = "visible";
 			document.getElementById("results").style.visibility = "visible";
 
+			document.getElementById("vampire").style.visibility = "hidden";
+			document.getElementById("human").style.visibility = "hidden";
 		}
 
 
@@ -91,8 +104,34 @@ class vampire_view {
 			document.getElementById("question2").style.visibility = "hidden";
 			document.getElementById("question3").style.visibility = "hidden";
 			document.getElementById("results").style.visibility = "visible";
+
+			document.getElementById("vampire").style.visibility = "hidden";
+			document.getElementById("human").style.visibility = "hidden";
 	}
-			
+
+
+	show_vampire() {
+		document.getElementById("vampire").style.visibility = "visible";
+	}
+
+
+	show_human() {
+		document.getElementById("human").style.visibility = "visible";
+	}
+
+	update_table (data) {
+		var v_table = document.getElementById("vampire-table").getElementsByTagName("tbody")[0];
+		var new_row = v_table.insertRow();
+		var new_cell1 = new_row.insertCell();
+		var new_cell2 = new_row.insertCell();
+
+		var new_text1 = document.createTextNode(data["name"]);
+		new_cell1.appendChild(new_text1);
+
+		var new_text2 = document.createTextNode(data["vampire"]);
+		new_cell2.appendChild(new_text2);
+
+	}
 }
 
 
@@ -107,6 +146,7 @@ class vampire_controller {
 		this.v_model = v_model
 		this.v_view = v_view
 		this.quiz = "";
+		this.added_names = [];
 	}
 
 
@@ -125,6 +165,8 @@ class vampire_controller {
 
 	submit_quiz() {
 
+		var person_name = document.getElementById("sus_name").value;
+
 		if (this.quiz.options[this.quiz.selectedIndex].value == "2") {
 			
 			var ans1 = document.getElementById("q1-yes").checked;
@@ -134,21 +176,25 @@ class vampire_controller {
 			console.log(ans1);
 			console.log(ans2);
 			console.log(ans3);
-			var result = this.v_model.question_logic(ans1, ans2, ans3);
+			console.log(person_name);
+			var result = this.v_model.question_logic(ans1, ans2, ans3, person_name);
 		}
 
 		else {
 
-			var result = this.v_model.random_logic();
+			var result = this.v_model.random_logic(person_name);
 		}
 
-		if (result == true) {
-			document.getElementById("vampire").style.visibility = "visible";
+		if (result["vampire"] == "Yes") {
+			this.v_view.show_vampire();
 		}
 
 		else {
-			document.getElementById("human").style.visibility = "visible";
+			this.v_view.show_human();
 		}
+
+		this.v_view.update_table(result);
+
 	}
 
 }
