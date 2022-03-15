@@ -10,6 +10,13 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+        <!-- Instantiate model, view and controller objects -->
+        <script>
+            const model = new vampire_model();
+            const view = new vampire_view();
+            const controller = new vampire_controller(model, view);
+        </script>
 
     </head>
 
@@ -91,21 +98,20 @@
                         <div class="col-sm-6 col-12 text-light mt-3">
                             <div class="form-group text-light">
                                 <label for="input-name">Name of Suspicious Person</label>
-                                <input class="form-control" type="text" placeholder="John Dracula">
+                                <input class="form-control" id="sus_name" type="text" placeholder="John Dracula">
                             </div>
                         </div>
                     </div>
-                    <button class="btn my-5 btn-sm text-light align-self-center width-25 bg-color1">Begin</button>
+                    <button class="btn my-5 btn-sm text-light align-self-center width-25 bg-color1" onclick="controller.start_quiz()">Begin</button>
                 </div>
             </div>
         </section>
 
-        <div class="h1 lead text-light text-center">Question Sections should appear after user clicks begin...</div>
         <!-- Quiz Question1 -->
-        <section class="bg-color3 question-section">
+        <section class="bg-color3 question-section" id="question1" style="visibility: hidden;">
             <div class="container">
                 <div class="d-flex my-4 flex-lg-row flex-column justify-content-center align-items-center">
-                    <h3 class="px-5 text-center text-light">Does _NAME_ have a pale complexion?</h1>
+                    <h3 class="px-5 text-center text-light">Does _NAME_ have a shadow?</h1>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-danger active height-50">
                             <input type="radio" name="q1" class="bg-color1" id="q1-yes" autocomplete="off" checked>Yes
@@ -119,10 +125,10 @@
         </section>
 
         <!-- Quiz Question2 -->
-        <section class="bg-color3 question-section">
+        <section class="bg-color3 question-section" id="question2" style="visibility: hidden;">
             <div class="container">
                 <div class="d-flex my-4 flex-lg-row flex-column justify-content-center align-items-center">
-                    <h3 class="px-5 text-center text-light">Does _NAME_ eat garlic?</h1>
+                    <h3 class="px-5 text-center text-light">Does _NAME_ have a pale complexion?</h1>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-danger active height-50">
                             <input type="radio" name="q2" class="bg-color1" id="q2-yes" autocomplete="off" checked>Yes
@@ -136,10 +142,10 @@
         </section>
 
         <!-- Quiz Question3 -->
-        <section class="bg-color3 question-section">
+        <section class="bg-color3 question-section" id="question3" style="visibility: hidden;">
             <div class="container">
                 <div class="d-flex my-4 flex-lg-row flex-column justify-content-center align-items-center">
-                    <h3 class="px-5 text-center text-light">Does _NAME_ have a pale complexion?</h1>
+                    <h3 class="px-5 text-center text-light">Does _NAME_ like garlic?</h1>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-danger active height-50">
                             <input type="radio" name="q3" class="bg-color1" id="q3-yes" autocomplete="off" checked>Yes
@@ -154,8 +160,11 @@
 
         <!-- Submit Button -->
         <div class="d-flex justify-content-center">
-            <button type="button" class="l-50 btn my-5 btn-sm text-light width-25 bg-color1">See Results</button>
+            <button type="button" class="l-50 btn my-5 btn-sm text-light width-25 bg-color1" id="results" onclick="controller.submit_quiz()" style="visibility: hidden;">See Results</button>
         </div>
+
+        <div class="h2 lead text-light text-center" id="vampire" style="visibility: hidden;">_NAME_ is a vampire!</div>
+        <div class="h2 lead text-light text-center" id="human" style="visibility: hidden;">_NAME_ is not a vampire.</div>
     </body>
 
 </html>
