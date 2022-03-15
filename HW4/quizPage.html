@@ -16,6 +16,17 @@
             const model = new vampire_model();
             const view = new vampire_view();
             const controller = new vampire_controller(model, view);
+
+            function addName(){
+                var name = document.getElementById('sus_name').value;
+
+                document.getElementById('q1name').innerHTML = "Does " + name + " have a shadow?";
+                document.getElementById('q2name').innerHTML = "Does " + name + " have a pale complexion?";
+                document.getElementById('q3name').innerHTML = "Does " + name + " like garlic?";
+
+                document.getElementById('vampire').innerHTML = name + " is a vampire!!!";
+                document.getElementById('human').innerHTML = name + " is not a vampire.";
+            }
         </script>
 
     </head>
@@ -90,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn my-5 btn-sm text-light align-self-center width-25 bg-color1" onclick="controller.start_quiz()">Begin</button>
+                    <button class="btn my-5 btn-sm text-light align-self-center width-25 bg-color1" onclick="controller.start_quiz(); addName()">Begin</button>
                 </div>
             </div>
         </section>
@@ -99,7 +110,7 @@
         <section class="bg-color3 question-section" id="question1" style="visibility: hidden;">
             <div class="container">
                 <div class="d-flex my-4 flex-lg-row flex-column justify-content-center align-items-center">
-                    <h3 class="px-5 text-center text-light">Does _NAME_ have a shadow?</h1>
+                    <h3 class="px-5 text-center text-light" id="q1name">Does _NAME_ have a shadow?</h3>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-danger active height-50">
                             <input type="radio" name="q1" class="bg-color1" id="q1-yes" autocomplete="off" checked>Yes
@@ -116,7 +127,7 @@
         <section class="bg-color3 question-section" id="question2" style="visibility: hidden;">
             <div class="container">
                 <div class="d-flex my-4 flex-lg-row flex-column justify-content-center align-items-center">
-                    <h3 class="px-5 text-center text-light">Does _NAME_ have a pale complexion?</h1>
+                    <h3 class="px-5 text-center text-light" id="q2name">Does _NAME_ have a pale complexion?</h3>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-danger active height-50">
                             <input type="radio" name="q2" class="bg-color1" id="q2-yes" autocomplete="off" checked>Yes
@@ -133,7 +144,7 @@
         <section class="bg-color3 question-section" id="question3" style="visibility: hidden;">
             <div class="container">
                 <div class="d-flex my-4 flex-lg-row flex-column justify-content-center align-items-center">
-                    <h3 class="px-5 text-center text-light">Does _NAME_ like garlic?</h1>
+                    <h3 class="px-5 text-center text-light" id="q3name">Does _NAME_ like garlic?</h3>
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-danger active height-50">
                             <input type="radio" name="q3" class="bg-color1" id="q3-yes" autocomplete="off" checked>Yes
