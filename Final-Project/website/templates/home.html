@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Wizard Conversation Section-->
+<section>
+    <div class="container">
+        <h1 class="heading-custom">Greetings Traveler!</h1>
+        <div class="homepage-wizard">
+            <div class="homepage-dialogue-box">
+                <p class="homepage-response">How can I help you?</p>
+            </div>
+        </div>
+    
+        <div class="w-100">
+            <div class="row w-100 justify-content-center">
+                <button class="col-lg homepage-response-button">How Are You?</button>
+                <button class="col-lg homepage-response-button">What is your role?</button>
+                <button class="col-lg homepage-response-button">What is Role Chat?</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section-->
+<section class="bg-color1">
+    <div class="container">
+        <h1 class="heading-custom bg-color1">About</h1>
+        <div class="row align-items-center">
+            <div class="col">
+                <p>
+                    Role Chat is a website created by Chris Bouton, Troy Nolan, and Thomas West. This website
+                    intends on allowing for people to yadayadayada lorem ipsum or something. dfhajls dhfkladsjhf
+                    adsfasdfdasfdasfasd fasdfadsjfyhadsjfhadsklfjkladsjfkladsj fkadsjfkl;asdjfklsadjfkldsajfksladjf;
+                    funstuffasdjfkasjdf kladsjfklasdjfklsadjfas;lfseriouslythoughthiswasgreatajsdklf jaskldfjaskdlfjdaslk
+                </p>
+            </div>
+            <div class="col">
+                <img class="img-fluid" src="{{ url_for('static', filename='wizard.jpg') }}" alt="wizard">
+            </div>
+        </div>
+        
+    </div>
+</section>
+{% endblock %}
