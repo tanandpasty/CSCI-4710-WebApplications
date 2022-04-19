@@ -2,5 +2,62 @@
 {% block title %}Character{% endblock %}
 
 {% block content %}
-<h1>This is test</h1>
+
+<!-- Forms to select role -->
+<section>
+    <div class="container p-3">
+        <h2 class="text-center">Choose a Character</h2>
+        <div class="row">
+            <form action="/not-setup-yet" method="POST" class="col" >
+                <label for="adj-loud">Loud</label>
+                <input type="radio" name="adj-radio" id="adj-loud" value="loud">
+                <br />
+                <label for="adj-sick">Sick</label>
+                <input type="radio" name="adj-radio" id="adj-sick" value="sick">
+                <br />
+                <label for="adj-cocky">Cocky</label>
+                <input type="radio" name="adj-radio" id="adj-cocky" value="cocky">
+                <br />
+                <input type="submit" value="Submit">
+            </form>
+            <br />
+            <form action="/not-setup-yet" method="POST" class="col">
+                <label for="role-wizard">Wizard</label>
+                <input type="radio" name="role-radio" id="role-wizard" value="wizard">
+                <br />
+                <label for="role-priest">Priest</label>
+                <input type="radio" name="role-radio" id="role-priest" value="priest">
+                <br />
+                <label for="role-king">King</label>
+                <input type="radio" name="role-radio" id="role-king" value="king">
+                <br />
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="bg-color1">
+    <div class="row container">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Username</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Currency</th>
+                    <td>10</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <div class="col">
+            <p>IMAGE OR SOMETHING MAYBE</p>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
