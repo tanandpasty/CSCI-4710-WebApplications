@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy
 from os import path
 from flask_login import LoginManager
+from flask_socketio import SocketIO, send
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
