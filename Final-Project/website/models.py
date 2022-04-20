@@ -1,3 +1,4 @@
+from email.policy import default
 from enum import unique
 from . import db
 from flask_login import UserMixin
@@ -14,5 +15,6 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(15), unique=True)
     password = db.Column(db.String(30))
-    adjective = db.Column(db.Integer, db.ForeignKey('adjective.id'))
-    role = db.Column(db.Integer, db.ForeignKey('role.id'))
+    currency = db.Column(db.Integer, default=0)
+    adjective = db.Column(db.String(30), default='Cowardly')
+    role = db.Column(db.String(30), default='Wizard')
