@@ -1,8 +1,7 @@
-from cmath import log
 from flask import Blueprint, redirect, render_template, request, url_for, flash
 from sqlalchemy import true
 from website.__init__ import db
-from website.models import Adjective, User
+from website.models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, current_user, logout_user
 
@@ -17,14 +16,12 @@ def login():
 
         if user:
             if check_password_hash(user.password, password):
-                print("YOU HAVE LOGGED IN")
                 login_user(user, remember=True)
                 flash('You have logged in!', category='success')
             else:
                 print("INCORRECT PASSWORD")
                 flash('You have typed in an incorrect password.', category='error')
         else:
-            print("NO USER HAS BEEN FOUND")
             flash('Username was not found', category='error')
     return render_template('login.html', user=current_user)
 

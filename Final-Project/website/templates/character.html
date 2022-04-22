@@ -8,30 +8,38 @@
     <div class="container p-3">
         <h2 class="text-center">Choose a Character</h2>
         <div class="row">
-            <form action="/not-setup-yet" method="POST" class="col" >
-                <label for="adj-loud">Loud</label>
-                <input type="radio" name="adj-radio" id="adj-loud" value="loud">
-                <br />
-                <label for="adj-sick">Sick</label>
-                <input type="radio" name="adj-radio" id="adj-sick" value="sick">
-                <br />
-                <label for="adj-cocky">Cocky</label>
-                <input type="radio" name="adj-radio" id="adj-cocky" value="cocky">
-                <br />
-                <input type="submit" value="adj-submit">
-            </form>
-            <br />
-            <form action="/not-setup-yet" method="POST" class="col">
-                <label for="role-wizard">Wizard</label>
-                <input type="radio" name="role-radio" id="role-wizard" value="wizard">
-                <br />
-                <label for="role-priest">Priest</label>
-                <input type="radio" name="role-radio" id="role-priest" value="priest">
-                <br />
-                <label for="role-king">King</label>
-                <input type="radio" name="role-radio" id="role-king" value="king">
-                <br />
-                <input type="submit" value="role-submit">
+            <form action="/character" method="post">
+              <select name="adjective">
+                {% for adjective in adj1 %}
+                  <option value="{{adjective}}"> {{adjective}}</option>
+                {% endfor %}
+                {% if user.currency >= 10 %}
+                  {% for adjective in adj2 %}
+                    <option value="{{adjective}}"> {{adjective}}</option>
+                  {% endfor %}
+                {% endif %}
+                {% if user.currency >= 50 %}
+                  {% for adjective in adj3 %}
+                    <option value="{{adjective}}"> {{adjective}}</option>
+                  {% endfor %}
+                {% endif %}
+              </select>
+              <select name="role">
+                {% for role in role1 %}
+                  <option value="{{role}}"> {{role}}</option>
+                {% endfor %}
+                {% if user.currency >= 10 %}
+                  {% for role in role2 %}
+                    <option value="{{role}}"> {{role}}</option>
+                  {% endfor %}
+                {% endif %}
+                {% if user.currency >= 50 %}
+                  {% for role in role3 %}
+                    <option value="{{role}}"> {{role}}</option>
+                  {% endfor %}
+                {% endif %}
+              </select>
+              <input type="submit" value="submit">
             </form>
         </div>
     </div>
@@ -44,7 +52,7 @@
                 <thead>
                   <tr>
                     <th scope="col">Username</th>
-                    <td>{{ user.username }}</td>
+                    <td>{{ user.adjective }} {{ user.username }} The {{ user.role }}</td>
                   </tr>
                 </thead>
                 <tbody>
