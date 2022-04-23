@@ -1,6 +1,6 @@
 body
 {
-    background-color: rgb(255, 218, 253) !important;
+    background-color: white;
 }
 
 .bg-color1
@@ -16,6 +16,11 @@ body
 .bg-color3
 {
     background-color: rgb(218, 238, 255) !important;
+}
+
+.bg-color4
+{
+    background-color: rgb(188, 236, 191) !important;
 }
 
 .navbar-custom
@@ -41,7 +46,7 @@ body
 {
     text-align: center;
     font-style: italic;
-    margin: 2% 0%;
+    padding: 2% 0%;
 }
 
 .homepage-wizard
@@ -51,8 +56,8 @@ body
     flex-direction: column;
     justify-content: end;
     align-items: center;
-    background-image: url(wizard.jpg);
-    background-size:cover;
+    background-image: url(WebApps-Wizard.png);
+    background-size:stretch;
     background-repeat: no-repeat;
     background-attachment: absolute;
     background-position: 50% 17%;
@@ -72,7 +77,6 @@ body
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: rgb(232, 170, 247);
     color: black;
     width: 95%;
     height: 15%;
