@@ -1,5 +1,3 @@
-from email.policy import default
-from enum import unique
 from . import db
 from flask_login import UserMixin
 

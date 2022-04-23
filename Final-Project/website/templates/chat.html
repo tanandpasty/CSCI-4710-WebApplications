@@ -9,7 +9,7 @@
 
 
 <!-- Chat Rooms -->
-<section class="container">
+<!-- <section class="container">
     <div class="realm-selection-box w-100 bg-color3 mt-5">
         <div class="realm-select-button">Mars</div>
         <div class="realm-select-button">Wizard's Castle</div>
@@ -19,30 +19,7 @@
         <div class="realm-select-button">Warzone</div>
     </div>
     <input type="submit" value="submit">
-</section>
-
-
-<script type="text/javascript">
-    $(document).ready(function() {
-    
-        var socket = io.connect('http://127.0.0.1:5000/chat');
-    
-        socket.on('connect', function() {
-            socket.send('Connected!');
-        });
-    
-        // socket.on('message', function(msg) {
-        //     $("#messages").append('<li>'+msg+'</li>');
-        //     console.log('Received message');
-        // });
-    
-        // $('#sendbutton').on('click', function() {
-        //     socket.send($('#myMessage').val());
-        //     $('#myMessage').val('');
-        // });
-    
-    });
-</script>
+</section> -->
 
 <ul id="messages"></ul>
 <input type="text" id="myMessage">

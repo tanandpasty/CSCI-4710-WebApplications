@@ -1,3 +1,4 @@
+from distutils.log import debug
 from website import create_app
 from flask_socketio import SocketIO, send
 
@@ -10,4 +11,4 @@ def handleMessage(msg):
 	send(msg, broadcast=True)
 
 if __name__ == '__main__':
-    socketio.run(app)
+	app.run(debug=True)

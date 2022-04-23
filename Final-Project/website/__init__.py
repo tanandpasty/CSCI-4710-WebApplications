@@ -1,7 +1,6 @@
 from venv import create
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import sqlalchemy
 from os import path
 from flask_login import LoginManager
 from flask_socketio import SocketIO, send
