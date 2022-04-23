@@ -29,6 +29,11 @@ body
     display: flex;
 }
 
+.navbar-logo
+{
+    height: 75px;
+}
+
 .navbar-button-custom
 {
     font-weight: bolder;

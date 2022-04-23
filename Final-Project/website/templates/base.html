@@ -26,6 +26,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav">
+              <a href="/" class="nav-item nav-link d-none d-lg-block" id="logo"><img class="navbar-logo" src="{{ url_for('static', filename='WebApps-RoleChatLogo.png') }}" alt="Role Chat Logo"></a>
               <a href="/" class="nav-item navbar-button-custom nav-link" id="home">Home</a>
               {% if user.is_authenticated %}
                 <a href="/character" class="nav-item navbar-button-custom nav-link" id="character">Character</a>
