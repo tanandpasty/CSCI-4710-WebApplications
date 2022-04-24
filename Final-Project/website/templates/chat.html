@@ -21,8 +21,41 @@
     <input type="submit" value="submit">
 </section> -->
 
-<ul id="messages"></ul>
-<input type="text" id="myMessage">
-<button id="sendbutton">Send</button>
+<section class="container mt-3">
+    <div class="row">
+        <div class="col-lg-10 bg-color3 chat-room d-flex flex-column align-items-end justify-content-sm-end">
+            <ul id="messages">
+                <p>msg1</p>
+                <p>asdfasdfad</p>
+                <p>gfyhsdfghsdfg</p>
+                <p>sghsghsdfgfdg</p>
+                <p>gasyretr3tregdfgw</p>
+
+            </ul>
+            <div class="d-flex flex-row chat-fields ">
+                <input type="text" id="myMessage">
+                <button id="sendbutton">Send</button>
+            </div>
+        </div>
+        <div class="col-lg-2 d-flex flex-column align-items-start bg-color1">
+            <h3>Users:</h3>
+            <h5>(0/10)</h5>
+            <ul id="users">
+                <p>username1</p>
+                <p class="chat-current-user">current_user_name</p>
+                <p>username3</p>
+                <p>username4</p>
+                <p>username5</p>
+                <p>username6</p>
+                <p>username7</p>
+                <p>username8</p>
+                <p>username9</p>
+                <p>username10</p>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
 
 {% endblock %}

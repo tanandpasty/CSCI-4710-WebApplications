@@ -114,6 +114,22 @@ body
     color: #525396 !important;
 }
 
+.chat-room
+{
+    height: 65vh;
+    width: 100%;
+}
+
+.chat-current-user
+{
+    color: #8283df !important
+}
+
+.chat-fields
+{
+    justify-self: end;
+}
+
 .realm-select-button
 {
     font-weight: bolder;
