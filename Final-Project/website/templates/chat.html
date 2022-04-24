@@ -22,17 +22,28 @@
 </section> -->
 
 <section class="container mt-3">
+    <h1>Welcome To The Chat Room</h1>
     <div class="row">
-        <div class="col-lg-10 bg-color3 chat-room d-flex flex-column align-items-end justify-content-sm-end">
-            <ul id="messages">
-                <p>msg1</p>
-                <p>asdfasdfad</p>
-                <p>gfyhsdfghsdfg</p>
-                <p>sghsghsdfgfdg</p>
-                <p>gasyretr3tregdfgw</p>
-
-            </ul>
+        <div class="col-lg-10 bg-color3 chat-room d-flex flex-column align-items-end justify-content-sm-end scroll-bg">
+            <div class="scroll-div">
+                <ul class="scroll-object" id="messages">
+                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> Has Connected...</p>
+                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
+                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> MESSAGE SENT BY ME</p>
+                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
+                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> MESSAGE SENT BY ME</p>
+                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
+                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> MESSAGE SENT BY ME</p>
+                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
+                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
+                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> MESSAGE SENT BY ME</p>
+                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p><p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
+                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> MESSAGE SENT BY ME</p>
+                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
+                </ul>
+            </div>
             <div class="d-flex flex-row chat-fields ">
+                <p class="lead chat-room-username-bottom">{{user.adjective}} {{user.username}} The {{user.role}}</p>
                 <input type="text" id="myMessage">
                 <button id="sendbutton">Send</button>
             </div>
@@ -42,7 +53,7 @@
             <h5>(0/10)</h5>
             <ul id="users">
                 <p>username1</p>
-                <p class="chat-current-user">current_user_name</p>
+                <p class="chat-current-user">{{user.username}}</p>
                 <p>username3</p>
                 <p>username4</p>
                 <p>username5</p>

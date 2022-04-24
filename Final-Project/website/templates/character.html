@@ -8,43 +8,67 @@
   <div class="container">
       <div class="row align-items-center justify-content-center pt-3">
           <div class="col-lg p-3 w-100">
-            <h1 class="text-uppercase text-purple">Alter Role</h1>
+            <h1 class="text-uppercase text-purple">Your Role</h1>
             <h2 class="fs-5">You Are {{ user.adjective }} {{ user.username }} The {{ user.role }}</h2>
-            <h3>Fame Level: {{ user.currency }}</h3>
+            <h3>Fame Level: <span style="color: purple;">{{ user.currency }}</span></h3>
             <div>
                 <form class="d-flex align-items-start justify-content-start" action="/character" method="post">
                   <select name="adjective" class="p-2">
                     {% for adjective in adj1 %}
-                      <option value="{{adjective}}"> {{adjective}}</option>
+                      <option value="{{adjective}}" 
+                      {% if adjective == user.adjective %}
+                        selected
+                      {% endif %}            
+                      > {{adjective}}</option>
                     {% endfor %}
                     {% if user.currency >= 10 %}
                       {% for adjective in adj2 %}
-                        <option value="{{adjective}}"> {{adjective}}</option>
+                        <option value="{{adjective}}" 
+                        {% if adjective == user.adjective %}
+                          selected
+                        {% endif %}
+                        > {{adjective}}</option>
                       {% endfor %}
                     {% endif %}
                     {% if user.currency >= 50 %}
                       {% for adjective in adj3 %}
-                        <option value="{{adjective}}"> {{adjective}}</option>
+                        <option value="{{adjective}}" 
+                        {% if adjective == user.adjective %}
+                          selected
+                        {% endif %}
+                        > {{adjective}}</option>
                       {% endfor %}
                     {% endif %}
                   </select>
                   <p class="p-2">{{user.username}}</p>
                   <select name="role" class="p-2">
                     {% for role in role1 %}
-                      <option value="{{role}}"> {{role}}</option>
+                      <option value="{{role}}" 
+                      {% if role == user.role %}
+                          selected
+                      {% endif %}
+                      > {{role}}</option>
                     {% endfor %}
                     {% if user.currency >= 10 %}
                       {% for role in role2 %}
-                        <option value="{{role}}"> {{role}}</option>
+                        <option value="{{role}}" 
+                        {% if role == user.role %}
+                          selected
+                        {% endif %}
+                        > {{role}}</option>
                       {% endfor %}
                     {% endif %}
                     {% if user.currency >= 50 %}
                       {% for role in role3 %}
-                        <option value="{{role}}"> {{role}}</option>
+                        <option value="{{role}}" 
+                        {% if role == user.role %}
+                          selected
+                        {% endif %}
+                        > {{role}}</option>
                       {% endfor %}
                     {% endif %}
                   </select>
-                  <input type="submit" class="ml-2 p-2 btn submit-button" value="submit">
+                  <input type="submit" class="ml-2 p-2 btn submit-button" value="Alter Role">
                 </form>
             </div>
           </div>

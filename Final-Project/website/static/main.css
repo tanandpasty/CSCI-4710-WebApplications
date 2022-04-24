@@ -130,6 +130,42 @@ body
     justify-self: end;
 }
 
+.scroll-bg
+{
+    background-color: rgb(145, 167, 185) !important;
+    height: 65vh;
+}
+
+
+.scroll-div
+{
+    width: 100%;
+    background-color: rgb(218, 238, 255) !important;
+    height: 65vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.other-msg
+{
+    text-align: left;
+}
+
+.my-msg
+{
+    text-align: right;
+}
+
+.chat-room-username
+{
+    font-weight: bolder;
+    align-self: center !important;
+    text-align: center;
+    color: white !important;
+    background-color: #525396 !important;
+    border-radius: 1em;
+}
+
 .realm-select-button
 {
     font-weight: bolder;
@@ -152,3 +188,9 @@ body
     background-color: #525396 !important;
     border-radius: 1em;
 }
+
+.chat-room-username-bottom
+{
+    color: white;
+}
+
