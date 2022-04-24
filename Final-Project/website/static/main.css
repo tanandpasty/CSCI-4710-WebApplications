@@ -1,6 +1,6 @@
 body
 {
-    background-color: white;
+    background-color: rgb(255, 218, 253) !important;
 }
 
 .bg-color1
@@ -95,7 +95,6 @@ body
     color: black !important;
     background-color: rgb(232, 170, 247) !important;
     border-radius: 1em;
-    margin: .5em 1em;
     padding: .5em 1em;
     width: 50%;
 }
@@ -110,6 +109,11 @@ body
     border-radius: 4%;
 }
 
+.text-purple
+{
+    color: #525396 !important;
+}
+
 .realm-select-button
 {
     font-weight: bolder;
@@ -121,4 +125,14 @@ body
     margin: .5em 1em;
     padding: .5em 1em;
     width: 40%;
+}
+
+.submit-button
+{
+    font-weight: bolder;
+    align-self: center !important;
+    text-align: center;
+    color: white !important;
+    background-color: #525396 !important;
+    border-radius: 1em;
 }

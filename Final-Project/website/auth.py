@@ -18,17 +18,19 @@ def login():
             if check_password_hash(user.password, password):
                 login_user(user, remember=True)
                 flash('You have logged in!', category='success')
+                return redirect(url_for("views.character"))
             else:
                 print("INCORRECT PASSWORD")
-                flash('You have typed in an incorrect password.', category='error')
+                flash('You have typed in an incorrect password.', category='danger')
         else:
-            flash('Username was not found', category='error')
+            flash('Username was not found', category='danger')
     return render_template('login.html', user=current_user)
 
 @auth.route('/logout')
 @login_required
 def logout():
     logout_user()
+    flash('You have logged out successfully!', category='success')
     return redirect(url_for("auth.login"))
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
@@ -40,21 +42,18 @@ def sign_up():
 
         user = User.query.filter_by(username=username).first()
         if user:
-            flash('User already exists.', category='error')
-            print("USER ALREADY EXISTS")
+            flash('User already exists.', category='danger')
         elif len(username) < 3:
-            flash('Username too short.', category='error')
-            print("USERNAME TOO SHORT")        
+            flash('Username too short.', category='danger')
         elif password1 != password2:
-            flash('Password don\'t match', category='error')
-            print("Password dont match")
+            flash('Password don\'t match', category='danger')
         elif len(password1) < 7:
-            flash('Password too short', category='error')
-            print("Pasword too short")
+            flash('Password too short', category='danger')
         else:
             new_user = User(username=username, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
+            flash('Account has been created! You are now logged in!', category='success')
             return redirect(url_for("views.home"))
     return render_template('sign_up.html', user=current_user)
