@@ -3,15 +3,19 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
-from flask_socketio import SocketIO, send
+from flask_socketio import SocketIO
+
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
+
+socketio = SocketIO()
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'A project created by students from ECU University :)'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+
     db.init_app(app)
     
     from .views import views
@@ -27,6 +31,8 @@ def create_app():
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
+
+    socketio.init_app(app)
 
     @login_manager.user_loader
     def load_user(id):

@@ -1,10 +1,13 @@
 from crypt import methods
-from flask import Blueprint, redirect, render_template, url_for, request
+from flask import Blueprint, redirect, render_template, session, url_for, request
 from flask_login import login_required, login_required, current_user
+from flask_socketio import SocketIO, join_room, leave_room, emit
+
 from website.models import User
 from . import db
 
 views = Blueprint('views', __name__)
+
 
 # Below are different lists of adjectives and roles.
 # The html character page will automatically update depending
@@ -41,6 +44,16 @@ def character():
 @views.route('/chat', methods=['GET', 'POST'])
 @login_required
 def chat():
+    username = str(current_user.username)
+    adjective = str(current_user.adjective)
+    role = str(current_user.role)
+    currency = str(current_user.currency)
+    context = {
+        'username': username,
+        'adjective': adjective,
+        'role': role,
+        'currency': currency
+    }
     if request.method == 'POST':
         # ADD LIKE FUNCTIONALITY HERE
         # Get the value from the submitted request
@@ -48,6 +61,8 @@ def chat():
         # Increment their currency by one
         # user_to_update = User.query.filter_by(username= WHATEVERTHEVALUEIS).first()
         # user_to_update.currency = 10
-        pass
+        return render_template("chat.html", user=current_user, context=context)
     else:
-        return render_template("chat.html", user=current_user)
+        return render_template("chat.html", user=current_user, context=context)
+
+        

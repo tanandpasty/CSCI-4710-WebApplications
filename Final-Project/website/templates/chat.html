@@ -4,8 +4,96 @@
 {% block content %}
 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script>
+var socket = io();
+
+const username = '{{ context.username }}';
+const adjective = '{{ context.adjective }}';
+const role = 'The ' + '{{ context.role }}';
+const fullName = adjective + ' ' + username + ' ' + role;
+console.log(fullName);
+//console.log(username);
+//console.log(adjective);
+//console.log(role);
+
+$(document).ready(function() {
+    
+    socket = io.connect('http://127.0.0.1:5000');
+    socket.on('connect', function() {
+        $('#users').append(document.createTextNode(username));
+        $('#mainNavBar').hide();
+        socket.emit('user_joined', {user: fullName});
+    });
+
+    socket.on('status', function(data) {
+        var entry;
+        entry = document.createElement("p");
+        newSpan = document.createElement("span");
+        message = document.createTextNode(data.msg);
+        bold = document.createElement("strong");
+        fullUser = document.createTextNode(data.user);
+        bold.appendChild(fullUser);
+        newSpan.appendChild(document.createTextNode('<'));
+        newSpan.appendChild(bold);
+        newSpan.appendChild(message);
+        entry.appendChild(newSpan);
+        if (data.user != username) {
+            entry.class = "other-msg";
+            $('#messages').append(entry);
+        }
+        else {
+            entry.class = "my-msg";
+            $('#messages').append(entry);
+        }
+    });
+
+    socket.on('message', function(data) {
+        var entry;
+        entry = document.createElement("p");
+        newSpan = document.createElement("span");
+        message = document.createTextNode(data.msg);
+        bold = document.createElement("strong");
+        fullUser = document.createTextNode(data.user + ':     ');
+        bold.appendChild(fullUser);
+        newSpan.appendChild(bold);
+        newSpan.appendChild(message);
+        entry.appendChild(newSpan);
+        if (data.user != username) {
+            entry.class = "other-msg";
+            $('#messages').append(entry);
+        }
+        else {
+            entry.class = "my-msg";
+            $('#messages').append(entry);
+        }
+    });
+
+    $('#sendbutton').on('click', function(x) {
+        userMessage = $('#myMessage').val();
+        $('#myMessage').val('');
+        socket.emit('message', {user: fullName, msg: userMessage});
+    });
+
+    $('#sendbutton').keypress(function(x) {
+        var code = x.keyCode || x.which;
+        if (code == 13) {
+            text = $('#myMessage').val();
+            $('#myMessage').val('');
+            socket.emit('message', {user: fullName, msg: text});
+        }
+    });
+
+    $('#leavebutton').on('click', function() {
+        socket.emit('user_left', {user: fullName});
+        window.location.href = "{{ url_for('views.home') }}";
+    });
+
+});
+</script>
+    
 
 
 <!-- Chat Rooms -->
@@ -27,24 +115,10 @@
         <div class="col-lg-10 bg-color3 chat-room d-flex flex-column align-items-end justify-content-sm-end scroll-bg">
             <div class="scroll-div">
                 <!-- Whenever someone sends a message, you can append the msg to the list "messages"-->
-                <ul class="scroll-object" id="messages">
-                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> Has Connected...</p>
-                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
-                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> MESSAGE SENT BY ME</p>
-                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
-                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> MESSAGE SENT BY ME</p>
-                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
-                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> MESSAGE SENT BY ME</p>
-                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
-                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
-                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> MESSAGE SENT BY ME</p>
-                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p><p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
-                    <p class="my-msg"><span class="chat-room-username">{{user.adjective}} {{user.username}} The {{user.role}}</span> MESSAGE SENT BY ME</p>
-                    <p class="other-msg"><span class="chat-room-username">therusername78</span>MESSAGE SENT BY OTHER USER</p>
-                </ul>
+                <ul class="scroll-object" id="messages"></ul>
             </div>
             <div class="d-flex flex-row chat-fields ">
-                <p class="lead chat-room-username-bottom">{{user.adjective}} {{user.username}} The {{user.role}}</p>
+                <p class="lead chat-room-username-bottom"></p>
                 <input type="text" id="myMessage">
                 <button id="sendbutton">Send</button>
             </div>
@@ -66,19 +140,11 @@
                 </form>
 
                 -->
-                <p>username1</p>
-                <p class="chat-current-user">{{user.username}}</p>
-                <p>username3</p>
-                <p>username4</p>
-                <p>username5</p>
-                <p>username6</p>
-                <p>username7</p>
-                <p>username8</p>
-                <p>username9</p>
-                <p>username10</p>
+                
             </ul>
         </div>
     </div>
+    <button id="leavebutton">Leave Chat Room</button>
 </section>
 
 
