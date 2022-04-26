@@ -1,4 +1,4 @@
-from crypt import methods
+#from crypt import methods
 from flask import Blueprint, redirect, render_template, url_for, request
 from flask_login import login_required, login_required, current_user
 from website.models import User
