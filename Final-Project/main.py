@@ -6,19 +6,18 @@ app = create_app()
 @socketio.on('user_joined')
 def joined(msg):
 	username = msg['user']
-	emit('status', {'msg': ' has entered the realm' + '>', 'user': username})
-
+	emit('status', {'msg': ' has entered the realm' + '>', 'user': username}, broadcast=True)
 
 @socketio.on('message')
 def message(msg):
 	username = msg['user']
-	emit('message', {'msg': msg['msg'], 'user': username})
+	emit('message', {'msg': msg['msg'], 'user': username}, broadcast=True)
 
 
 @socketio.on('user_left')
 def user_left(msg):
 	username = msg['user']
-	emit('status', {'msg': ' has left the realm' + '>', 'user': username})
+	emit('status', {'msg': ' has left the realm' + '>', 'user': username}, broadcast=True)
 
 
 if __name__ == '__main__':
