@@ -1,5 +1,4 @@
 from flask import Blueprint, redirect, render_template, request, url_for, flash
-from sqlalchemy import true
 from website.__init__ import db
 from website.models import User
 from werkzeug.security import generate_password_hash, check_password_hash

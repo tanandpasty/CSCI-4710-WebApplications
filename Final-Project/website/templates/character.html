@@ -93,7 +93,7 @@
                 We wanted to allow for people to really express themselves through roleplaying-
                 which isn't very fun nor interesting if there is only one option. In the above section,
                 you are able to select different modifiers to form your Role Chat persona. Would you like
-                to be Tough jimBoy89 The Wizard? Or perhaps Smart jimBoy89 The Alien is a better fit for you.
+                to be Strong jimBoy89 The Wizard? Or perhaps Smart jimBoy89 The Goblin is a better fit for you.
                 Whatever the case, there are plenty of roles you can choose from to take with you into the
                 chat room!
               </p>
@@ -110,7 +110,11 @@
         <div class="col-lg">
           <h2>Unlocking New Roles</h2>
           <div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa fugit labore aspernatur magnam officiis tempore accusantium omnis alias illum neque corporis sed, dolor, reprehenderit aliquam! Soluta consequuntur labore odio nulla?
+              <p>Need more roles? No worries, there are plenty of roles that you can unlock through gaining fame in the chatroom. If somebody likes
+                your deal, they are able to click on your username to boost your fame level. Reach different levels of fame to unlock super cool roles
+                such as British you The Velociraptor or Conservative you The Liberal! The possibilities are endless! (Disclaimer: this previous statement
+                was meant to be taken as more of a figure of speech as opposed to there literally being endless options. I mean come on, what do you think
+                this is, Gary's Mod?)
               </p>
           </div>
         </div>
@@ -124,35 +128,44 @@
 <!-- Tier 1 Roles -->
 <section class="bg-color2 p-3">
   <div class="container">
-    <h1>Tier 1 Roles (Unlocked by Creating an Account)</h1>
-    <div class="list-group list-group-flush">
-      <ul>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-      </ul>
+    <h1>Tier 1 Roles</h1>
+    <p>Unlocked by Creating an Account</p>
+    <div class="row">
+      <div class="col list-group list-group-flush">
+        <ul>
+          {% for adj in adj1 %}
+            <li class="list-group-item">{{adj}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col">
+        {% for role in role1 %}
+            <li class="list-group-item">{{role}}</li>
+          {% endfor %}
+      </div>
     </div>
+    
   </div>
 </section>
 
 <!-- Tier 2 Roles -->
 <section class="bg-color1 p-3">
   <div class="container">
-    <h1>Tier 2 Roles (Unlocked by Reaching 10 Fame)</h1>
-    <div class="list-group list-group-flush">
-      <ul>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-      </ul>
+    <h1>Tier 2 Roles</h1>
+    <p>Unlocked by Reaching 10 Fame</p>
+    <div class="row">
+      <div class="col list-group list-group-flush">
+        <ul>
+          {% for adj in adj2 %}
+            <li class="list-group-item">{{adj}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col">
+        {% for role in role2 %}
+            <li class="list-group-item">{{role}}</li>
+          {% endfor %}
+      </div>
     </div>
   </div>
 </section>
@@ -160,17 +173,21 @@
 <!-- Tier 3 Roles -->
 <section class="bg-color2 p-3">
   <div class="container">
-    <h1>Tier 3 Roles (Unlocked by Reaching 50 Fame)</h1>
-    <div class="list-group list-group-flush">
-      <ul>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-        <li class="list-group-item">something</li>
-      </ul>
+    <h1>Tier 3 Roles</h1>
+    <p>Unlocked by Reaching 50 Fame</p>
+    <div class="row">
+      <div class="col list-group list-group-flush">
+        <ul>
+          {% for adj in adj3 %}
+            <li class="list-group-item">{{adj}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col">
+        {% for role in role3 %}
+            <li class="list-group-item">{{role}}</li>
+          {% endfor %}
+      </div>
     </div>
   </div>
 </section>

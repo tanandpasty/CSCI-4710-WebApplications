@@ -1,4 +1,3 @@
-#from crypt import methods
 from flask import Blueprint, redirect, render_template, url_for, request
 from flask_login import login_required, login_required, current_user
 from website.models import User
@@ -12,12 +11,12 @@ views = Blueprint('views', __name__)
 # adjectives1 are automatically unlocked, adjectives2 are unlocked after
 # reaching a currency of 10, adjective3 are unlocked after
 # reaching a currency of 50. The same goes for roles1-roles3
-adjectives1 = ['Tough', 'Lame', 'Lucky']
-adjectives2 = ['Smart', 'Hot', 'Sneaky']
-adjectives3 = ['Sassy', 'Mean', 'Cocky']
-roles1 = ['Wizard', 'Goblin', 'Princess']
-roles2 = ['Cowboy', 'Alien', 'Priest']
-roles3 = ['Zookeeper', 'Ninja', 'Pirate']
+adjectives1 = ['British', 'Cocky', 'Cool', 'Creepy', 'Evil', 'Friendly', 'Good', 'Hot', 'Introverted', 'Irish', 'Lame', 'Loud', 'Mean', 'Quiet', 'Smart', 'Sneaky', 'Strong', 'Stubborn', 'Stupid']
+adjectives2 = ['Athiestic', 'Blind', 'Conservative', 'Diseased', 'Dying', 'Easily-Shutdown', 'Hated', 'Hurtful', 'Invincible', 'Juvenile', 'Liberal', 'Multi-Millionaire', 'Mysterious', 'Religious', 'Sneaky']
+adjectives3 = ['Ascended', 'Celebrity', 'Chatty', 'Dinosaur-Rider', 'Dismissive', 'Doom-Mongering',  'Gigantic', 'Goblin-Slaying', 'Hoarder', 'Murderous', 'Needs-A-Shower', 'Time-Traveling', 'Undead', 'Verbose']
+roles1 = ['Barbarian', 'BlackSmith', 'Cow', 'Dragon', 'Dwarf', 'Elf', 'Farmer', 'Goblin', 'Halfling', 'King', 'Knight', 'Priest', 'Prince', 'Princess', 'Rock Golem', 'Tritton', 'Troll', 'Witch', 'Wizard']
+roles2 = ['Alien', 'Baseball Player', 'Basketball Player', 'Cowboy', 'Dad', 'Lawyer', 'Mermaid', 'Mom', 'NPC', 'Pirate', 'Skeptic', 'Soccer Player', 'Super Hero', 'Uncle', 'Zookeeper']
+roles3 = ['Anime Side Character', 'Conservative', 'E-Girl', 'Frog', 'Imposter', 'Infant', 'Liberal', 'Main Character', 'Monkey', 'Ninja', 'School Girl', 'Social Justice Warrior', 'Teenager', 'Velociraptor']
 
 @views.route('/')
 def home():

@@ -14,5 +14,5 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(15), unique=True)
     password = db.Column(db.String(30))
     currency = db.Column(db.Integer, default=0)
-    adjective = db.Column(db.String(30), default='Cowardly')
-    role = db.Column(db.String(30), default='Wizard')
+    adjective = db.Column(db.String(30), default='Silly')
+    role = db.Column(db.String(30), default='User')

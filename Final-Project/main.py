@@ -1,4 +1,3 @@
-from distutils.log import debug
 from website import create_app
 from flask_socketio import SocketIO, send
 

@@ -29,14 +29,18 @@
             <div class="col">
                 <p>
                     Role Chat is a website created by Chris Bouton, Troy Nolan, and Thomas West. This website
-                    intends on allowing for people to Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad cumque minima nesciunt dicta aut veritatis repudiandae minus, alias quidem quia nostrum nemo. Beatae officia voluptate, nisi blanditiis ullam doloremque ducimus!
+                    allows for people to be someone who they are not. Define your role on the Character page and
+                    then jump into one of limitless potential interactions on the Chat page.
                 </p>
+                {% if not user.is_authenticated %}
+                        <p><span class="h3">Don't see these pages? Well, that's because you need to make an account first,
+                            <br/>Silly you The Not User!</span></p>
+                {% endif %}
             </div>
             <div class="col-lg">
                 <img class="w-100 p-5 rounded-circle" src="{{ url_for('static', filename='WebApps-RoleChat.png') }}" alt="wizard">
             </div>
         </div>
-        
     </div>
 </section>
 {% endblock %}
