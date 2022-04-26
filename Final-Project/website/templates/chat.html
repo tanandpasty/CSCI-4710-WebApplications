@@ -41,12 +41,12 @@ $(document).ready(function() {
         newSpan.appendChild(bold);
         newSpan.appendChild(message);
         entry.appendChild(newSpan);
-        if (data.user != username) {
-            entry.class = "other-msg";
+        if (data.user != fullName) {
+            entry.setAttribute('class', 'other-msg');
             $('#messages').append(entry);
         }
         else {
-            entry.class = "my-msg";
+            entry.setAttribute('class', 'my-msg');
             $('#messages').append(entry);
         }
     });
@@ -62,12 +62,12 @@ $(document).ready(function() {
         newSpan.appendChild(bold);
         newSpan.appendChild(message);
         entry.appendChild(newSpan);
-        if (data.user != username) {
-            entry.class = "other-msg";
+        if (data.user != fullName) {
+            entry.setAttribute('class', 'other-msg');
             $('#messages').append(entry);
         }
         else {
-            entry.class = "my-msg";
+            entry.setAttribute('class', 'my-msg');
             $('#messages').append(entry);
         }
     });
