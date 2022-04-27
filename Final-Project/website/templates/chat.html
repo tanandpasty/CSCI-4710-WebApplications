@@ -95,7 +95,7 @@ $(document).ready(function() {
         socket.emit('message', {user: username, fullUser: fullName, msg: userMessage});
     });
 
-    $('#sendbutton').keypress(function(x) {
+    $('#myMessage').keypress(function(x) {
         var code = x.keyCode || x.which;
         if (code == 13) {
             text = $('#myMessage').val();
