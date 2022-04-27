@@ -71,7 +71,7 @@ $(document).ready(function() {
         newButton.setAttribute('class', 'bi bi-heart chat-room-like-button');
         newButton.onclick = function ()
         {
-            newButton.setAttribute('class', 'bi bi-heart-fill chat-room-like-button');
+            this.setAttribute('class', 'bi bi-heart-fill chat-room-like-button');
             socket.emit('liked_msg', data.user);
             this.disabled = true;
         };
@@ -103,11 +103,6 @@ $(document).ready(function() {
             socket.emit('message', {user: username, fullUser: fullName, msg: text});
         }
     });
-
-    $('#likeButton').on('click', function(x)
-    {
-        socket.emit('liked_msg', "tanandpasty")
-    })
 
     $('#leavebutton').on('click', function() {
         socket.emit('user_left', {user: fullName, id: username});
