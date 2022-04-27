@@ -157,12 +157,17 @@ body
 {
     text-align: left;
     color: green;
+    background-color: rgb(202, 216, 228) !important;
+    border-radius: 10px;
 }
 
 .my-msg
 {
     text-align: right;
     color: blue;
+    background-color: rgb(193, 214, 231) !important;
+    border-radius: 10px;
+
 }
 
 .chat-room-username
