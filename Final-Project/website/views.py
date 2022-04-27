@@ -9,6 +9,9 @@ from . import db
 
 views = Blueprint('views', __name__)
 
+connected_clients = []
+global num_clients
+num_clients = 0
 
 # Below are different lists of adjectives and roles.
 # The html character page will automatically update depending
@@ -59,9 +62,15 @@ def chat():
 
 @socketio.on('user_joined')
 def joined(msg):
-	username = msg['user']
-	emit('status', {'msg': ' has entered the realm' + '>', 'user': username})
-	emit('status', {'msg': ' has entered the realm' + '>', 'user': username}, broadcast=True, include_self=False)
+    username = msg['user']
+    id = msg['id']
+    if id not in connected_clients:
+        connected_clients.append(id)
+        global num_clients
+        num_clients = num_clients + 1
+    emit('changeUsers', {'clients': connected_clients, 'numClients': num_clients}, broadcast=True)
+    emit('status', {'msg': ' has entered the realm' + '>', 'user': username}, broadcast=True, include_self=False)
+    emit('status', {'msg': ' has entered the realm' + '>', 'user': username})
 
 @socketio.on('message')
 def message(msg):
@@ -77,6 +86,11 @@ def like_msg(user):
 
 @socketio.on('user_left')
 def user_left(msg):
-	username = msg['user']
-	emit('status', {'msg': ' has left the realm' + '>', 'user': username})
-	emit('status', {'msg': ' has left the realm' + '>', 'user': username}, broadcast=True, include_self=False)      
+    username = msg['user']
+    id = msg['id']
+    connected_clients.remove(id)
+    global num_clients
+    num_clients = num_clients - 1
+    emit('changeUsers', {'clients': connected_clients, 'numClients': num_clients}, broadcast=True)
+    emit('status', {'msg': ' has left the realm' + '>', 'user': username}, broadcast=True, include_self=False)  
+    emit('status', {'msg': ' has left the realm' + '>', 'user': username})     

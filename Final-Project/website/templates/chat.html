@@ -23,12 +23,18 @@ $(document).ready(function() {
     socket = io.connect('http://127.0.0.1:5000');
 
     socket.on('connect', function() {
-        $('#users').append(document.createTextNode(username));
         $('#mainNavBar').hide();
-        var entry;
-        entry = document.createElement("p");
-        $('#messages').append(entry);
-        socket.emit('user_joined', {user: fullName});
+        socket.emit('user_joined', {user: fullName, id: username});
+    });
+
+    socket.on('changeUsers', function(data) {
+        $('#users').empty();
+        $('h5').text('(' + data.numClients + '/10)');
+        for (let x=0; x < data.clients.length; x++) {
+            user = document.createElement("li");
+            user.appendChild(document.createTextNode(data.clients[x]));
+            $('#users').append(user);
+        }
     });
 
     socket.on('status', function(data) {
@@ -104,7 +110,7 @@ $(document).ready(function() {
     })
 
     $('#leavebutton').on('click', function() {
-        socket.emit('user_left', {user: fullName});
+        socket.emit('user_left', {user: fullName, id: username});
         window.location.href = "{{ url_for('views.home') }}";
     });
 
@@ -154,7 +160,7 @@ $(document).ready(function() {
         </div>
         <div class="col-lg-2 d-flex flex-column align-items-start bg-color1">
             <h3>Users:</h3>
-            <h5>(<span id="currentUserCount">0</span>/10)</h5>
+            <span><h5 id="userCount">(0/10)</h5></span>
             <!-- Whenever someone joins the chat room, you can just append their username to the list "users"-->
             <ul id="users">
                 <!-- The easiest way I can think of to have like buttons is to turn this list into a bunch of buttons.
