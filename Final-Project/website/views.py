@@ -55,17 +55,7 @@ def chat():
         'role': role,
         'currency': currency
     }
-    if request.method == 'POST':
-        # ADD LIKE FUNCTIONALITY HERE
-        # Get the value from the submitted request
-        
-        # Query for the user whose username matches that value
-        # Increment their currency by one
-        # user_to_update = User.query.filter_by(username= WHATEVERTHEVALUEIS).first()
-        # user_to_update.currency = 10
-        return render_template("chat.html", user=current_user, context=context)
-    else:
-        return render_template("chat.html", user=current_user, context=context)
+    return render_template("chat.html", user=current_user, context=context)
 
 @socketio.on('user_joined')
 def joined(msg):
@@ -76,8 +66,8 @@ def joined(msg):
 @socketio.on('message')
 def message(msg):
 	username = msg['user']
-	emit('message', {'msg': msg['msg'], 'user': username})
-	emit('message', {'msg': msg['msg'], 'user': username}, broadcast=True, include_self=False)
+	emit('message', {'msg': msg['msg'], 'fullUser' : msg['fullUser'], 'user': username})
+	emit('message', {'msg': msg['msg'], 'fullUser' : msg['fullUser'], 'user': username}, broadcast=True, include_self=False)
 
 @socketio.on('liked_msg')
 def like_msg(user):

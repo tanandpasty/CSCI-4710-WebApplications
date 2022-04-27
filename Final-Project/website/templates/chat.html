@@ -57,14 +57,24 @@ $(document).ready(function() {
         var entry;
         entry = document.createElement("p");
         newSpan = document.createElement("span");
-        message = document.createTextNode(data.msg);
+        newButton = document.createElement("button");
         bold = document.createElement("strong");
-        fullUser = document.createTextNode(data.user + ':     ');
+        message = document.createTextNode(data.msg);
+        fullUser = document.createTextNode(data.fullUser + ':     ');
+        newButton.innerHTML = "Like button";
+        
+        newButton.onclick = function ()
+        {
+            socket.emit('liked_msg', data.user);
+            this.disabled = true;
+        };
         bold.appendChild(fullUser);
+        bold.appendChild(newButton);
         newSpan.appendChild(bold);
         newSpan.appendChild(message);
+        
         entry.appendChild(newSpan);
-        if (data.user != fullName) {
+        if (data.user != username) {
             entry.setAttribute('class', 'other-msg');
             $('#messages').append(entry);
         }
@@ -77,7 +87,7 @@ $(document).ready(function() {
     $('#sendbutton').on('click', function(x) {
         userMessage = $('#myMessage').val();
         $('#myMessage').val('');
-        socket.emit('message', {user: fullName, msg: userMessage});
+        socket.emit('message', {user: username, fullUser: fullName, msg: userMessage});
     });
 
     $('#sendbutton').keypress(function(x) {
@@ -85,7 +95,7 @@ $(document).ready(function() {
         if (code == 13) {
             text = $('#myMessage').val();
             $('#myMessage').val('');
-            socket.emit('message', {user: fullName, msg: text});
+            socket.emit('message', {user: username, fullUser: fullName, msg: text});
         }
     });
 
@@ -162,6 +172,5 @@ $(document).ready(function() {
             </ul>
         </div>
     </div>
-    <button id='likeButton' class="btn btn-large btn-primary" type="button">Like Button</button>
 </section>
 {% endblock %}
