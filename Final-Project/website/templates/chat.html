@@ -69,20 +69,18 @@ $(document).ready(function() {
             socket.emit('liked_msg', data.user);
             this.disabled = true;
         };
-        bold.appendChild(newButton);
-        bold.appendChild(fullUser);
-        newSpan.appendChild(bold);
-        newSpan.appendChild(message);
-        
-        entry.appendChild(newSpan);
         if (data.user != username) {
             entry.setAttribute('class', 'other-msg');
-            $('#messages').append(entry);
+            bold.appendChild(newButton);
         }
         else {
             entry.setAttribute('class', 'my-msg');
-            $('#messages').append(entry);
         }
+        bold.appendChild(fullUser);
+        newSpan.appendChild(bold);
+        newSpan.appendChild(message);
+        entry.appendChild(newSpan);
+        $('#messages').append(entry);
     });
 
     $('#sendbutton').on('click', function(x) {
