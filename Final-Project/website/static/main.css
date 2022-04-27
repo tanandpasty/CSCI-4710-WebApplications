@@ -42,11 +42,16 @@ body
     align-self: center !important;
     text-align: center;
     color: black !important;
-    background-color: rgb(255, 218, 253) !important;
+    background-color: rgb(255, 218, 253);
     border-radius: 1em;
     margin: .5em 1em;
     padding: .5em 1em;
     width: 7em;
+}
+
+.navbar-button-custom:hover
+{
+    background-color: rgb(218, 230, 255) !important;
 }
 
 .heading-custom
@@ -58,18 +63,13 @@ body
 
 .homepage-wizard
 {
-    margin:auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: center;
     background-image: url(WebApps-Wizard.png);
-    background-size:stretch;
+    background-size: stretch;
     background-repeat: no-repeat;
     background-attachment: absolute;
-    background-position: 50% 17%;
+    background-position: 50% 100%;
     width: 100%;
-    height: 55vh;
+    height: 450px;
     border: .5em rgb(231, 199, 230) solid;
     border-radius: 15px;
 }
@@ -99,6 +99,11 @@ body
     background-color: rgb(232, 170, 247) !important;
     border-radius: 1em;
     padding: .5em 1em;
+}
+
+.homepage-response-button:hover
+{
+    background-color: rgb(218, 230, 255) !important;
 }
 
 .realm-selection-box

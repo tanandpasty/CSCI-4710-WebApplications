@@ -3,7 +3,6 @@
 
 {% block content %}
 
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -95,8 +94,6 @@ $(document).ready(function() {
 });
 </script>
     
-
-
 <!-- Chat Rooms -->
 <!-- <section class="container">
     <div class="realm-selection-box w-100 bg-color3 mt-5">
@@ -109,6 +106,20 @@ $(document).ready(function() {
     </div>
     <input type="submit" value="submit">
 </section> -->
+
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom d-flex-lg" id="mainNavBar">
+    <div class="container">
+        <button class="navbar-toggler navbar-button-custom" type="button" data-toggle="collapse" data-target="#navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+          <div class="navbar-nav">
+            <img class="navbar-logo d-none d-lg-block" src="{{ url_for('static', filename='WebApps-RoleChatLogo.png') }}" alt="Role Chat Logo">
+            <button class="nav-item navbar-button-custom nav-link" id="leavebutton">Leave Chat Room</button>
+          </div>
+        </div>
+    </div>
+</nav>
 
 <section class="container mt-3">
     <h1>Welcome To The Chat Room</h1>
@@ -139,15 +150,10 @@ $(document).ready(function() {
                     <input type="radio" id="username123" class="hidden" name="username123" value="username123" checked><label for="huey">Huey</label>
                     <button type="submit">Username123</button>
                 </form>
-
                 -->
-                
+ 
             </ul>
         </div>
     </div>
-    <button id="leavebutton">Leave Chat Room</button>
 </section>
-
-
-
 {% endblock %}
