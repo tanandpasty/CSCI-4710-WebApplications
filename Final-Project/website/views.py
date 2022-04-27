@@ -1,7 +1,8 @@
 #from crypt import methods
 from flask import Blueprint, redirect, render_template, session, url_for, request
 from flask_login import login_required, login_required, current_user
-from flask_socketio import SocketIO, join_room, leave_room, emit
+from website import socketio
+from flask_socketio import emit
 
 from website.models import User
 from . import db
@@ -57,6 +58,7 @@ def chat():
     if request.method == 'POST':
         # ADD LIKE FUNCTIONALITY HERE
         # Get the value from the submitted request
+        
         # Query for the user whose username matches that value
         # Increment their currency by one
         # user_to_update = User.query.filter_by(username= WHATEVERTHEVALUEIS).first()
@@ -65,4 +67,26 @@ def chat():
     else:
         return render_template("chat.html", user=current_user, context=context)
 
-        
+@socketio.on('user_joined')
+def joined(msg):
+	username = msg['user']
+	emit('status', {'msg': ' has entered the realm' + '>', 'user': username})
+	emit('status', {'msg': ' has entered the realm' + '>', 'user': username}, broadcast=True, include_self=False)
+
+@socketio.on('message')
+def message(msg):
+	username = msg['user']
+	emit('message', {'msg': msg['msg'], 'user': username})
+	emit('message', {'msg': msg['msg'], 'user': username}, broadcast=True, include_self=False)
+
+@socketio.on('liked_msg')
+def like_msg(user):
+	user_to_update = User.query.filter_by(username= user).first()
+	user_to_update.currency += 1
+	db.session.commit()	
+
+@socketio.on('user_left')
+def user_left(msg):
+	username = msg['user']
+	emit('status', {'msg': ' has left the realm' + '>', 'user': username})
+	emit('status', {'msg': ' has left the realm' + '>', 'user': username}, broadcast=True, include_self=False)      
