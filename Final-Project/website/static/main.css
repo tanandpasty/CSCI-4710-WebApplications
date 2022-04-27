@@ -151,11 +151,13 @@ body
 .other-msg
 {
     text-align: left;
+    color: green;
 }
 
 .my-msg
 {
     text-align: right;
+    color: blue;
 }
 
 .chat-room-username
