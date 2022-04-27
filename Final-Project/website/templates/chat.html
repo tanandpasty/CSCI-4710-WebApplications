@@ -19,8 +19,8 @@ console.log(fullName);
 //console.log(role);
 
 $(document).ready(function() {
-    
-    socket = io.connect('https://web-applications-spr22.ue.r.appspot.com');
+    socket = io.connect('http://127.0.0.1:5000')
+    //socket = io.connect('https://web-applications-spr22.ue.r.appspot.com');
 
     socket.on('connect', function() {
         $('#mainNavBar').hide();
