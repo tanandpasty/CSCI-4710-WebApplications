@@ -61,15 +61,16 @@ $(document).ready(function() {
         bold = document.createElement("strong");
         message = document.createTextNode(data.msg);
         fullUser = document.createTextNode(data.fullUser + ':     ');
-        newButton.innerHTML = "Like button";
-        
+        newButton.innerHTML = "";
+        newButton.setAttribute('class', 'bi bi-heart chat-room-like-button');
         newButton.onclick = function ()
         {
+            newButton.setAttribute('class', 'bi bi-heart-fill chat-room-like-button');
             socket.emit('liked_msg', data.user);
             this.disabled = true;
         };
-        bold.appendChild(fullUser);
         bold.appendChild(newButton);
+        bold.appendChild(fullUser);
         newSpan.appendChild(bold);
         newSpan.appendChild(message);
         
