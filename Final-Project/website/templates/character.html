@@ -13,7 +13,7 @@
             <h3>Fame Level: <span style="color: purple;">{{ user.currency }}</span></h3>
             <div class="bg-color5">
                 <form class="alter-character-form row" action="/character" method="post">
-                  <select name="adjective" class="col-8 col-centered text-center">
+                  <select name="adjective" class="rounded col-8 mt-2 col-centered text-center">
                     {% for adjective in adj1 %}
                       <option value="{{adjective}}" 
                       {% if adjective == user.adjective %}
@@ -40,8 +40,8 @@
                       {% endfor %}
                     {% endif %}
                   </select>
-                  <p class="mt-2 mb-2 col-8 col-centered text-center">{{user.username}}</p>
-                  <select name="role" class="col-8 col-centered text-center">
+                  <p class="mt-2 mb-2 col-8 col-centered text-center font-weight-bold">{{user.username}}</p>
+                  <select name="role" class="rounded col-8 col-centered text-center">
                     {% for role in role1 %}
                       <option value="{{role}}" 
                       {% if role == user.role %}
@@ -68,7 +68,7 @@
                       {% endfor %}
                     {% endif %}
                   </select>
-                  <input type="submit" class="col-lg-10 col-centered mt-2 mb-2 text-center btn submit-button" value="Alter Role">
+                  <input type="submit" class="col-lg-8 col-5 col-centered mt-2 mb-2 text-center btn submit-button" value="Alter Role">
                 </form>
             </div>
           </div>
