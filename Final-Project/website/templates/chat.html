@@ -142,18 +142,18 @@ $(document).ready(function() {
 <section class="container mt-3">
     <h1>Welcome To The Chat Room</h1>
     <div class="row">
-        <div class="col-lg-10 bg-color3 chat-room d-flex flex-column align-items-end justify-content-sm-end scroll-bg">
+        <div class="col-lg-10 col-12 bg-color3 chat-room d-flex flex-column align-items-end justify-content-sm-end scroll-bg">
             <div class="scroll-div">
                 <!-- Whenever someone sends a message, you can append the msg to the list "messages"-->
                 <ul class="scroll-object" id="messages"></ul>
             </div>
-            <div class="d-flex flex-row chat-fields ">
-                <p class="lead chat-room-username-bottom mr-2 mt-2">{{ user.username }}:</p>
-                <input type="text" id="myMessage">
-                <button id="sendbutton">Send</button>
+            <div class="d-flex row chat-fields ">
+                <p class="lead col-12 chat-room-username-bottom mr-2 mt-2">{{ user.username }}:</p>
+                <input type="text" class="mb-2 col-centered col-9" id="myMessage">
+                <button class="mb-2 col-centered col-2" id="sendbutton">Send</button>
             </div>
         </div>
-        <div class="col-lg-2 d-flex flex-column align-items-start bg-color1">
+        <div class="col-lg-2 col-12 d-flex flex-column align-items-start bg-color1">
             <h3>Users:</h3>
             <span><h5 id="userCount">(0/10)</h5></span>
             <!-- Whenever someone joins the chat room, you can just append their username to the list "users"-->

@@ -25,6 +25,11 @@ body
     background-color: rgb(188, 236, 191) !important;
 }
 
+.bg-color5
+{
+    background-color: rgb(215, 191, 238) !important;
+}
+
 .navbar-custom
 {
     background-color: rgb(232, 170, 247) !important;
@@ -98,7 +103,9 @@ body
     color: black !important;
     background-color: rgb(232, 170, 247) !important;
     border-radius: 1em;
-    padding: .5em 1em;
+    padding: .5em;
+    margin: 1% 0px;
+    width: 40%;
 }
 
 .homepage-response-button:hover
@@ -114,6 +121,12 @@ body
     min-height: 50vh;
     border: 1px rgb(88, 133, 255) solid;
     border-radius: 4%;
+}
+
+.col-centered
+{
+    float: none;
+    margin: 0 auto;
 }
 
 .text-purple
@@ -159,6 +172,7 @@ body
     color: green;
     background-color: rgb(202, 216, 228) !important;
     border-radius: 10px;
+    margin: 3% 2%;
 }
 
 .my-msg
@@ -167,6 +181,7 @@ body
     color: blue;
     background-color: rgb(193, 214, 231) !important;
     border-radius: 10px;
+    margin: 3% 2%;
 
 }
 
